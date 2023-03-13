@@ -1,0 +1,158 @@
+﻿@model WebLaptopVM.Models.User
+
+@{
+    ViewBag.Title = "Edit";
+    var ImagePath = "~/Images/User/" + Model.Image;
+}
+
+
+<body>
+    <div class="container-fluid">
+        <form method="post">
+            <div class="row">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-3">
+                    <h3>
+                        @Html.DisplayFor(model => model.Name)
+                    </h3>
+                </div>
+                <div class="profile-head">
+
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <h5>@Html.ActionLink("|| Thông Tin |", "Details", "User")</h5>
+                        </li>
+                        <li class="nav-item">
+                            <h5>@Html.ActionLink("| Đăng Xuất ||", "Logout", "Home")</h5>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            @using (Html.BeginForm("Edit", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-horizontal">
+                    <div class="row">
+                        <div class="col-md-2">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.Id)
+                        </div>
+                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label></label>
+                                </div>
+                                <div class="col-md-9">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="profile-img">
+                                <div class="col-md-10">
+                                    <img id="output" class="img-rounded" alt="Ảnh" width="200"
+                                         src="@Url.Content(@ImagePath)" />
+                                    <h5><label for="ufile" style="cursor:pointer;">Chọn file ảnh</label></h5>
+                                    <input name="ImageFile" id="ufile" type="file" style="display:none;"
+                                           onchange="loadFile(event)" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="tab-content profile-tab" id="myTabContent">
+                                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                    <div class="row">
+                                        <div class="col-md-4"><label></label></div>
+                                        <div class="col-md-8"><label></label></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <h5>Họ và tên:</h5>
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <h5>Giới tính:</h5>
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.DropDownList("Sex", null, htmlAttributes: new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.Sex, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <h5>Tài khoản:</h5>
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.Account, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Account, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <h5>Mật khẩu:</h5>
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <h5>Email:</h5>
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <h5>Số điện thoại:</h5>
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.Phone_number, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Phone_number, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <h5>Địa chỉ:</h5>
+                                        </div>
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+                                            <h5>
+                                                <input type="submit" value="SAVE" class="btn btn-default" />
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="row">
+                <h3><img class="img-fluid" src="~/Assets/client/images/Screenshot.png" /></h3>
+            </div>
+        </form>
+    </div>
+</body>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script>
+    var loadFile = function (event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>

@@ -1,0 +1,77 @@
+﻿@model IEnumerable<WebLaptopVM.Models.Cart>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <aside class="col-lg-8">
+                <div class="card">
+                    <div class="table-responsive">
+                        <table class="table table-borderless table-shopping-cart">
+                            <thead class="text-muted">
+                                <tr class="small text-uppercase">
+                                    <th scope="col"></th>
+                                    <th scope="col">Sản Phẩm</th>
+                                    <th scope="col" width="120">Số lượng</th>
+                                    <th scope="col" width="120">Giá</th>
+                                    <th scope="col" width="60"></th>
+                                    <th scope="col" width="60"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @{
+                                                string ImagePath = "~/Images/Product/" + item.Image;
+                                            }
+                                            <img src="@Url.Content(ImagePath)" width="100" class="img-thumbnail" />
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Product1.Name)
+                                        </td>
+                                        <td>
+                                            @*Html.DisplayFor(modelItem => item.Quantity)*@
+                                            @Html.EditorFor(modelItem => item.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(modelItem => item.Quantity, "", new { @class = "text-danger" })
+                                        </td>
+                                        <td>
+                                            <div class="price-wrap"> <var class="price">@Html.DisplayFor(modelItem => item.Price)</var></div>
+                                        </td>
+                                        <td class="">@Html.ActionLink("Lưu", "Edit", new { id = item.Id, quantity = item.Quantity })</td>
+                                        <td class="">@Html.ActionLink("Xóa", "Delete", new { id = item.Id })</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </aside>
+            <aside class="col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <dl class="dlist-align">
+                            <dt>Tổng Giá:</dt>
+                            <dd class="text-right ml-3">@Session["Price"]</dd>
+                        </dl>
+                        <dl class="dlist-align">
+                            <dt>Giảm Giá:</dt>
+                            <dd class="text-right text-danger ml-3">- 0đ</dd>
+                        </dl>
+                        <dl class="dlist-align">
+                            <dt>Tổng Cộng:</dt>
+                            <dd class="text-right text-dark b ml-3"><strong>@Session["Price"]</strong></dd>
+                        </dl>
+                        <hr>
+                        <button type="button" class="btn btn-danger">@Html.ActionLink("Mua hàng", "CreateO")</button>
+                        <button type="button" href="/Home/Index" class="btn btn-danger">Tiếp Tục Mua Sắm</button>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+</body>

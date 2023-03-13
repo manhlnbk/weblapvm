@@ -1,0 +1,54 @@
+﻿@model IEnumerable<WebLaptopVM.Models.Category>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<body class="bg-primary">
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <main>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5>
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header"><h3 class="text-center font-weight-light my-4">Danh sách danh mục</h3></div>
+                                <div class="card-body">
+                                    <table class="table">
+                                        <tr>
+                                            <th>
+                                                @Html.ActionLink("Tên hãng", "Index", new { sort = ViewBag.SapXep })
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Origin)
+                                            </th>
+                                            <th></th>
+                                        </tr>
+
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Name)
+                                                </td>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Origin)
+                                                </td>
+                                                <td>
+                                                    @Html.ActionLink("Sửa", "Edit", new { id = item.Id }) |
+                                                    @Html.ActionLink("Chi tiết", "Details", new { id = item.Id }) |
+                                                    @Html.ActionLink("Xóa", "Delete", new { id = item.Id })
+                                                </td>
+                                            </tr>
+                                        }
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>

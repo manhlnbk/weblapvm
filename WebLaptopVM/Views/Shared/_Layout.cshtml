@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>LaptopVM</title>
+    <link rel="stylesheet" href="/Assets/client/css/bootstrap.css" />
+    <link rel="stylesheet" href="/Assets/client/css/style.css" />
+    <script src="/Assets/client/js/jquery-3.6.0.js"></script>
+    <script src="/Assets/client/js/bootstrap.js"></script>
+    <style type="text/css">
+        .viewbag {
+            color: #FF0000;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div id="header">
+        <div class="container">
+            <div class="row">
+                <div id="logo" class="col-lg-3 col-md-3 col-sm-12">
+                    <h1><a href="/Home/Index"><img class="img-fluid" src="/Assets/client/images/logo.png" /></a></h1>
+                </div>
+                <div id="search" class="col-lg-6 col-md-7 col-sm-12">
+                    <form class="form-inline my-lg-0">
+                        <input class="form-control" type="search" placeholder="Tìm kiếm" name="search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
+                    </form>
+                </div>
+                <div id="cart" class="col-lg-1 col-md-2 col-sm-12">
+                    @if (Session["Account"] != null)
+                    {
+                        <a href="#!">@Html.ActionLink("Giỏ Hàng", "Index", "Cart")</a>
+                    }
+                </div>
+                <div id="lsdh" class="col-lg-1 col-md-2 col-sm-12">
+                    @if (Session["Account"] != null)
+                    {
+                        <a href="#!">@Html.ActionLink("Đơn Hàng", "Index", "Order")</a>
+                    }
+                </div>
+                <div id="account" class="col-lg-1 col-md-2 col-sm-12">
+                    @if (Session["Account"] == null)
+                    {
+                        <a href="/Login/Index">Đăng Nhập</a> <span></span>
+                    }
+                    else
+                    {
+                        <a href="">@Html.ActionLink("Tài khoản", "Details", "User")</a> <span></span>
+                    }
+                </div>
+            </div>
+            <button class="navbar-light navbar-toggler" type="button" data-toggle="collapse" data-target="#menu" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </div>
+    <!-- End Header -->
+    <!-- Body -->
+    <div id="body">
+        <div class="container">
+            @RenderBody()
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/bootstrap")
+            @RenderSection("scripts", required: false)
+        </div>
+    </div>
+    <div id="footer-t">
+        <div class="container">
+            <div class="row">
+                <div id="logo-f" class="col-lg-3 col-md-6 col-sm-12">
+                    <h2><a><img src="/Assets/client/images/logo.png" /></a></h2>
+                    <p>
+                        Cửa hàng LaptopVM kính chào quý khách!
+                        Cảm ơn quý khách đã sử dụng dịch vụ của chúng tôi!
+                    </p>
+                </div>
+                <div id="address" class="col-lg-3 col-md-6 col-sm-12">
+                    <h3>Địa chỉ</h3>
+                    <p>123 CD - Bắc Từ Liêm - Hà Nội</p>
+                    <p>321 XT - Cầu Giấy - Hà Nội</p>
+                </div>
+                <div id="services" class="col-lg-3 col-md-6 col-sm-12">
+                    <h3>Dịch vụ</h3>
+                    <p>Bảo hành rơi vỡ, ngấm nước Care Diamond</p>
+                    <p>Bảo hành Care X60 rơi vỡ ngấm nước vẫn Đổi mới</p>
+                </div>
+                <div id="hotline" class="col-lg-3 col-md-6 col-sm-12">
+                    <h3>Hotline</h3>
+                    <p>Phone Sale: (+84) 0123456789</p>
+                    <p>Email: laptopvm@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

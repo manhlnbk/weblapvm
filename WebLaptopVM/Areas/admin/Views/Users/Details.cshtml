@@ -1,0 +1,102 @@
+﻿@model WebLaptopVM.Models.User
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<body class="bg-primary">
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <main>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5>
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header"><h3 class="text-center font-weight-light my-4">Khách hàng @Html.DisplayFor(model => model.Name)</h3></div>
+                                <div class="card-body">
+
+                                    <div>
+                                        <hr />
+                                        <dl class="dl-horizontal">
+                                            <dt>
+                                                @Html.DisplayNameFor(model => model.Sex1.Name)
+                                            </dt>
+
+                                            <dd>
+                                                @Html.DisplayFor(model => model.Sex1.Name)
+                                            </dd>
+
+                                            <dt>
+                                                @Html.DisplayNameFor(model => model.Name)
+                                            </dt>
+
+                                            <dd>
+                                                @Html.DisplayFor(model => model.Name)
+                                            </dd>
+
+                                            <dt>
+                                                @Html.DisplayNameFor(model => model.Account)
+                                            </dt>
+
+                                            <dd>
+                                                @Html.DisplayFor(model => model.Account)
+                                            </dd>
+
+                                            <dt>
+                                                @Html.DisplayNameFor(model => model.Password)
+                                            </dt>
+
+                                            <dd>
+                                                @Html.DisplayFor(model => model.Password)
+                                            </dd>
+
+                                            <dt>
+                                                @Html.DisplayNameFor(model => model.Email)
+                                            </dt>
+
+                                            <dd>
+                                                @Html.DisplayFor(model => model.Email)
+                                            </dd>
+
+                                            <dt>
+                                                @Html.DisplayNameFor(model => model.Phone_number)
+                                            </dt>
+
+                                            <dd>
+                                                @Html.DisplayFor(model => model.Phone_number)
+                                            </dd>
+
+                                            <dt>
+                                                @Html.DisplayNameFor(model => model.Address)
+                                            </dt>
+
+                                            <dd>
+                                                @Html.DisplayFor(model => model.Address)
+                                            </dd>
+
+                                            <dt>
+                                                @Html.DisplayNameFor(model => model.Image)
+                                            </dt>
+
+                                            <dd>
+                                                @{
+                                                    string ImagePath = "~/Images/User/" + Model.Image;
+                                                }
+                                                <img src="@Url.Content(ImagePath)" width="300" class="img-thumbnail" />
+                                                <br />
+                                            </dd>
+
+                                        </dl>
+                                    </div>
+                                    <p>
+                                        @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,59 @@
+﻿@model WebLaptopVM.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<!DOCTYPE html>
+<html>
+    <body>
+        <div>
+            <h1 class="my-4">
+                @Html.DisplayFor(model => model.Name)
+            </h1>
+
+            <!-- Portfolio Item Row -->
+            <div class="row">
+
+                <div class="col-md-8">
+                    @{
+                        string ImagePath = "~/Images/Product/" + Model.Image;
+                    }
+                    <img src="@Url.Content(ImagePath)" width="700" class="img-thumbnail" />
+                    <br />
+                </div>
+
+                <div class="col-md-4">
+                    <h3 class="my-3">Đơn giá: <span>@Html.DisplayFor(model => model.Price)đ</span></h3>
+                    <h3 class="my-3">Mô tả</h3>
+                    <h5>@Html.DisplayFor(model => model.Describe)</h5>
+                    <h3 class="my-3">Thông số sản phẩm</h3>
+                    <ul>
+                        <li>@Html.DisplayFor(model => model.Screen_size)</li>
+                        <li>@Html.DisplayFor(model => model.CPU)</li>
+                        <li>@Html.DisplayFor(model => model.RAM)</li>
+                        <li>@Html.DisplayFor(model => model.Hard_drive)</li>
+                        <li>@Html.DisplayFor(model => model.Card)</li>
+                        <li>@Html.DisplayFor(model => model.Pin)</li>
+                        <li>@Html.DisplayFor(model => model.Weight)</li>
+                    </ul>
+                    @if (Session["Account"] == null)
+                    {
+                        <h4 class="viewbag">Vui lòng đăng nhập để mua hàng</h4>
+                    }
+                    else
+                    {
+                        @ViewBag.cart
+                        <label>Số lượng:</label>
+                        <input type="number" name="quantity" />
+                        <input type="hidden" name="id" value="@Html.DisplayFor(model => model.Id)" />
+                        <br />
+                        <button type="button" class="btn btn-danger">@Html.ActionLink("Mua ngay", "CreateO", new { id = Model.Id })</button>
+                        <button type="button" class="btn btn-primary">@Html.ActionLink("Thêm Giỏ Hàng", "CreateC", new { id = Model.Id })</button>
+                    }
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

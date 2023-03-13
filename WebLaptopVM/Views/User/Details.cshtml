@@ -1,0 +1,126 @@
+﻿@model WebLaptopVM.Models.User
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<body>
+    <div class="container-fluid">
+        <form method="post">
+            <div class="row">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-3">
+                    <h3>
+                        @Html.DisplayFor(model => model.Name)
+                    </h3>
+                </div>
+                <div class="profile-head">
+
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <h5>@Html.ActionLink("|| Sửa Thông Tin |", "Edit", new { id = Model.Id })</h5>
+                        </li>
+                        <li class="nav-item">
+                            <h5>@Html.ActionLink("| Đăng Xuất ||", "Logout", "Home")</h5>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                </div>
+                <div class="col-md-3">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label></label>
+                        </div>
+                        <div class="col-md-9">
+                            <p></p>
+                        </div>
+                    </div>
+                    <div class="profile-img">
+                        @{
+                            string ImagePath = "~/Images/User/" + Model.Image;
+                        }
+                        <img src="@Url.Content(ImagePath)" width="200" class="img-thumbnail" />
+                        <br />
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="tab-content profile-tab" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label></label>
+                                </div>
+                                <div class="col-md-9">
+                                    <p></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h5>Họ và tên:</h5>
+                                </div>
+                                <div class="col-md-9">
+                                    <h5>@Html.DisplayFor(model => model.Name)</h5>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h5>Giới tính:</h5>
+                                </div>
+                                <div class="col-md-9">
+                                    <h5>@Html.DisplayFor(model => model.Sex1.Name)</h5>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h5>Tài khoản:</h5>
+                                </div>
+                                <div class="col-md-9">
+                                    <h5>@Html.DisplayFor(model => model.Account)</h5>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h5>Mật khẩu:</h5>
+                                </div>
+                                <div class="col-md-9">
+                                    <h5>@Html.DisplayFor(model => model.Password)</h5>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h5>Email:</h5>
+                                </div>
+                                <div class="col-md-9">
+                                    <h5>@Html.DisplayFor(model => model.Email)</h5>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h5>Số điện thoại:</h5>
+                                </div>
+                                <div class="col-md-9">
+                                    <h5>@Html.DisplayFor(model => model.Phone_number)</h5>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h5>Địa chỉ:</h5>
+                                </div>
+                                <div class="col-md-9">
+                                    <h5>@Html.DisplayFor(model => model.Address)</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <h3><img class="img-fluid" src="~/Assets/client/images/Screenshot.png" /></h3>
+            </div>
+        </form>
+    </div>
+</body>

@@ -1,0 +1,98 @@
+﻿@model WebLaptopVM.Models.Order
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<body class="bg-primary">
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <main>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5>
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header"><h3 class="text-center font-weight-light my-4">Chi tiết đơn hàng</h3></div>
+                                <div class="card-body">
+                                    <div>
+                                        <hr />
+                                        <dl class="dl-horizontal">
+                                            <dt>
+                                                @Html.DisplayNameFor(model => model.Product1.Name)
+                                            </dt>
+
+                                            <dd>
+                                                @Html.DisplayFor(model => model.Product1.Name)
+                                            </dd>
+
+                                            <dt>
+                                                @Html.DisplayNameFor(model => model.StatusOrder.Name)
+                                            </dt>
+
+                                            <dd>
+                                                @Html.DisplayFor(model => model.StatusOrder.Name)
+                                            </dd>
+
+                                            <dt>
+                                                @Html.DisplayNameFor(model => model.User1.Name)
+                                            </dt>
+
+                                            <dd>
+                                                @Html.DisplayFor(model => model.User1.Name)
+                                            </dd>
+
+                                            <dt>
+                                                @Html.DisplayNameFor(model => model.Quantity)
+                                            </dt>
+
+                                            <dd>
+                                                @Html.DisplayFor(model => model.Quantity)
+                                            </dd>
+
+                                            <dt>
+                                                @Html.DisplayNameFor(model => model.Time_order)
+                                            </dt>
+
+                                            <dd>
+                                                @Html.DisplayFor(model => model.Time_order)
+                                            </dd>
+
+                                            <dt>
+                                                @Html.DisplayNameFor(model => model.Profit)
+                                            </dt>
+
+                                            <dd>
+                                                @Html.DisplayFor(model => model.Profit)
+                                            </dd>
+
+                                            <dt>
+                                                @Html.DisplayNameFor(model => model.Phone_number)
+                                            </dt>
+
+                                            <dd>
+                                                @Html.DisplayFor(model => model.Phone_number)
+                                            </dd>
+
+                                            <dt>
+                                                @Html.DisplayNameFor(model => model.Address)
+                                            </dt>
+
+                                            <dd>
+                                                @Html.DisplayFor(model => model.Address)
+                                            </dd>
+
+                                        </dl>
+                                    </div>
+                                    <p>
+                                        @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
